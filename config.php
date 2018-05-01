@@ -31,7 +31,7 @@ include(CORE . "adodb/adodb.inc.php");
 	$conn->Connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 	$conn->SetFetchMode(ADODB_FETCH_ASSOC);
 	$ADODB_QUOTE_FIELDNAMES = true;
-	$ADODB_FORCE_TYPE = 0;
+	//$ADODB_FORCE_TYPE = 0;
 	$conn->Execute("set names 'utf8'"); // UPDATE [TABLE] SET [FIELD]=CONVERT(CONVERT(CONVERT([FIELD] USING 'latin1') USING BINARY) USING 'utf8');
 // AdoDB (MySQL) Module
 

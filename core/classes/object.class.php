@@ -23,12 +23,12 @@ class Object
 			if (array_key_exists($key, $obj_vars))
 	        {
 	            $result = $conn->GetAll("SELECT * from $this->table where $key='$id'");
-	            if (isset($result[0]) AND is_array($result[0]))
+	            if (!empty($result[0]) AND is_array($result[0]))
 	             foreach ($result[0] as $property_name=>$value)
 	                $this->$property_name = $value;
 	        }
         if ($continue)
-			if ((!isset($this->id)) or ($this->id==''))
+			if ((empty($this->id)) or ($this->id==''))
 	            foreach ($empty_vars as $property_name=>$value)
 	                $this->$property_name = '';
 	}
@@ -51,7 +51,6 @@ class Object
 			$properties = $p;
 		}
 
-        $properties["date_registered"] = date("Y-m-d H:i:s");
         if (isset($this->type) AND $this->type == "member" )
         {
         	if (!$properties['password']) $properties['password'] = $this->gen_pwd();
@@ -64,10 +63,10 @@ class Object
         }
 
 
-
         $result = $conn->Execute("SELECT * FROM $this->table WHERE id = -1");
         $obj_vars = $result->FetchObj();
         $insertSQL = $conn->GetInsertSQL($result, get_object_vars($this));
+        echo "Insert: " . $insertSQL;
         $conn->Execute($insertSQL);
         if (! $this->id) {$this->id = $conn->Insert_ID();}
         $this->update($properties);

@@ -6,8 +6,6 @@ class Player extends Object
 		$this->type = "player";
 		$this->suffix = "player";
 		$this->table = $table;
-		$this->$key = $id;
-		$this->auth_field = $key;
 		parent::__construct($id, $key, $table);
 	}
 	
