@@ -1,7 +1,7 @@
 <?php
 class Match extends Object
 {
-	public function __construct($id=null, $key=MEMBERS_AUTHENTICATE_BY, $table="matches")
+	public function __construct($id=null, $key="id", $table="matches")
 	{
 		$this->type = "matches";
 		$this->suffix = "matches";

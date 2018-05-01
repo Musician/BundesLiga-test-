@@ -1,7 +1,7 @@
 <?php
 class Player extends Object
 {
-	public function __construct($id=null, $key=MEMBERS_AUTHENTICATE_BY, $table="players")
+	public function __construct($id=null, $key="id", $table="players")
 	{
 		$this->type = "player";
 		$this->suffix = "player";
