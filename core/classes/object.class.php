@@ -3,6 +3,8 @@
 
 class Object
 {
+	// cRud
+	// Initialize object in ORM style. 
 	public function __construct($id=0, $key="id", $table=null)
 	{
         global $conn;
@@ -29,10 +31,14 @@ class Object
 			if ((!isset($this->id)) or ($this->id==''))
 	            foreach ($empty_vars as $property_name=>$value)
 	                $this->$property_name = '';
-        if (isset($this->type) AND $this->type == "member")
-        	$this->fullname = $this->fname . " " . $this->lname;
 	}
 
+	// Crud
+	// Insert the object into database
+	// Usage:
+	// $member = new Member();
+	// $member->create($_POST); -> will insert all matching data from $_POST into the new user object and from there - in database. 
+	// ($_POST['something'] becomes $member->something and inserts into `members`.something column into database.  
  	public function create($properties)
     {
         global $conn;
@@ -61,7 +67,6 @@ class Object
 
         $result = $conn->Execute("SELECT * FROM $this->table WHERE id = -1");
         $obj_vars = $result->FetchObj();
-        //foreach($obj_vars as $var=>$val) if (! isset($this->$var)) $this->$var = '';
         $insertSQL = $conn->GetInsertSQL($result, get_object_vars($this));
         $conn->Execute($insertSQL);
         if (! $this->id) {$this->id = $conn->Insert_ID();}
@@ -70,6 +75,12 @@ class Object
         else return 0;
     }
 
+    // crUd
+    // Update object in database.
+    // Possible ussage:
+    // $member = new Member($id);
+    // $member->something = "something-new";
+    // $member->update();
 	public function update($properties,$save_it=1)
     {
 		if (is_object($properties))
@@ -86,6 +97,7 @@ class Object
         if ($save_it) $this->save();
     }
 
+    // Alias to update 
 	public function save()
 	{
         global $conn;
@@ -93,13 +105,17 @@ class Object
         $updateSQL = $conn->GetUpdateSQL($result, get_object_vars($this));
         if ($updateSQL) $conn->Execute($updateSQL);
 	}
-
+	
+	// cruD
+	// Sets `objecttable`.deleted = 1 into database. Not actual delete, just marking as deleted for later filter
 	public function del()
 	{
 		$this->deleted = 1;
 		$this->save();
 	}
 
+	
+	// CURRENT STATUS - EXPERIMENTAL
 	public function get_all($format = "raw")
 	{
 		global $conn;
