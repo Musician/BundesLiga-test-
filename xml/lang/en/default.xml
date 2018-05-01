@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<default lang="en">
+
+	<home> Home </home>
+	<services> Services </services>
+	<contacts> Contacts </contacts>
+	<terms> Terms </terms>
+	<information> Information </information>
+	<request> Request </request>
+	<currency> BGN </currency>
+	<more> More </more>
+	<for_us> About us </for_us>
+	<yes> Yes </yes>
+	<no> No </no>
+	<send> Send </send>
+	<from> from </from>
+	<to> to </to>
+	<hour> o'clock </hour>,
+
+</default>

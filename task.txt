@@ -1,0 +1,25 @@
+TASK:
+We are set to build an online app, that fetches and shows Game data from Bundesliga. 
+
+WORKFLOW:
+A basic page will be built. It will fetch info from our current database for current match, if any, and will display it in relevant area. 
+If visitor uses the search form, page will reload with the results, displayed as links, which will lead visitor to "game details data". 
+
+IMPLEMENTATIONS:
+First we will build a service, that will fetch data, thru BL API and will fill it in our database. Service will be written in PHP and is supposed to be ran from crontab. 
+Second we will implement a search engine, that will works on two passes:
+Pass 1: Will search in our database
+if not result
+Pass 2: Will call BL API to get needed result. 
+On pass two, a second step, invisible for visitor will be implemented - store new data into database. 
+
+Search in our database will perform query search (possible binary search, in case data volume grows big) on several columns of the game-data-table. In this case we will achieve a google-like search engine. 
+
+
+TECHNOLOGIES:
+MySQL - database server
+XSLT/XML - templatiosation engine and XML also for fetching data from API site. Possible - JSON for fetching. 
+PHP - my personal core engine, similar to frameworks, with internal ORM build on top of AdoDB. 
+JavaScript/jQuery - for internal search
+
+The choise to use these technologies is the fact, that I am advanced to them, they also has proven to be reliable, easymaintainable, with great performance, scalable. 

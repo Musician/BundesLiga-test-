@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<default lang="bg">
+
+	<home>Начало</home>
+	<services>Услуги</services>
+	<contacts>Контакти</contacts>
+	<terms>Условия</terms>
+	<information>Информация</information>
+	<request>Заявка</request>
+	<currency>лв</currency>
+	<more>Повече</more>
+	<for_us>За нас</for_us>
+	<yes>Да</yes>
+	<no>Не</no>
+	<send>Изпращане</send>
+	<from> от </from>
+	<to> до </to>
+	<hour> часа </hour>
+
+</default>

@@ -1,0 +1,51 @@
+body
+{
+	padding: 10px;
+	
+}
+
+section
+{
+	clear: both;
+}
+
+h2 {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.header
+{
+	display: inline;
+}
+
+.left-half
+{
+	float: left;
+	width: 85%;
+	overflow: hidden;	
+	
+}
+
+.right-half
+{
+	overflow: hidden;	
+}
+
+button.search-button
+{
+	background-image: url('../img/s-button.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 25px;
+	height: 25px;
+	border:none;
+}
+
+input#searchstring
+{
+	border:none;
+	background-color: #efefef;
+	width: 225px;
+	height: 25px;
+}
