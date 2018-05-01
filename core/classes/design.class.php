@@ -63,6 +63,28 @@ class Design
 		# SHOW
 		echo $xslt->transformToXML( $xml ); 		
 	}
+	
+	
+	// TODO:
+	// public function __autoload($class) 
+	// {
+	//		if (is_file(CLASSES . $class . "class.php") )
+	//		{
+	//			require_once(CLASSES . $class . "class.php");		
+	//		}
+	//		else if (is_file(CLASSES . ucfirst($class) . "class.php"))
+	//		{
+	//			require_once(CLASSES . ucfirst($class) . "class.php")
+	//		}
+	//		else
+	//		{
+	//			throw new Exception("Cann`t load class: $class");
+	//		}
+	// }
+	
+	
+	// public function __get($key) {}
+	// public function __set($key, $value) {}
 }
 
 ?>
