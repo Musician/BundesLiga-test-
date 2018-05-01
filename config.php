@@ -62,5 +62,4 @@ define("MEMBERS_AUTHENTICATE_BY", "email"); # Set here the name of the field use
 // The very important and vital checks
 // phpinfo() and die();
 if (!extension_loaded('xsl') && !extension_loaded('xslt')) die("No XSL(T) Loaded!");
-
 ?>

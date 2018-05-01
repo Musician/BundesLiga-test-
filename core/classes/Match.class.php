@@ -8,7 +8,7 @@ class Match extends Object
 		$this->table = $table;
 		$this->$key = $id;
 		$this->auth_field = $key;
-		$this->Object($id, $key, $table);
+		parent::__construct($id, $key, $table);
 	}
 	
 }
