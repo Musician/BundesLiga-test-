@@ -57,14 +57,11 @@
 		<!-- Responsive -->
 		<link rel="stylesheet" type="text/css" href="css/responsive.css" />
 
-		<!-- Colors -->
-		<link rel="stylesheet" type="text/css" href="css/colors/color5.css" id="colors" />
-
-		<!-- Animation Style -->
-		<link rel="stylesheet" type="text/css" href="css/animate.css" />
-		
 		<!-- Theme Style -->
 		<link rel="stylesheet" type="text/css" href="css/own.css" />
+
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
+
 	</head>
 
 	</xsl:template> 
@@ -80,6 +77,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/parallax.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js" />
     <script type="text/javascript" src="js/service.js"></script>
 
 	</xsl:template> 

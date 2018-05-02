@@ -20,6 +20,7 @@
 				<input type="text" name="search" id="searchstring" placeholder="Enter string for search">
 				<button type="submit" class="search-button"></button>
 				</input>
+				<small>Hints: type team:Dortmund to see matches where Dortmund took place.</small>
 				</form>
 			</div>
 		</div>
@@ -28,6 +29,14 @@
 		<section id="current-match">
 		<hr />
 		<h3>Current Match:</h3>
+		<div id="datatable" style="display: none">
+			Results: <hr />
+
+			<table id="resulttable" class="display" width="60%">
+
+			</table>
+
+		</div>
 		
 		</section>
 
