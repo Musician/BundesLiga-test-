@@ -17,6 +17,14 @@
 
 			<div class="right-half">		
 				<form name="search" method="post" id="searchform">
+				<select name="season" id="season">
+				<option value="" disabled="disabled" selected="true">Season</option>
+				<option value="2018">2018</option>
+				<option value="2017">2017</option>
+				<option value="2016">2016</option>
+				<option value="2015">2015</option>
+				<option value="2014">2014</option>
+				</select>
 				<input type="text" name="search" id="searchstring" placeholder="Enter string for search">
 				<button type="submit" class="search-button"></button>
 				</input>
@@ -26,9 +34,37 @@
 		</div>
 		</section>		
 		
-		<section id="current-match">
+		<section id="upcomming_events">
 		<hr />
-		<h3>Current Match:</h3>
+		<h3>Upcomming Events: <small>(point 1 from the task)</small></h3>
+		    <xsl:for-each select="/root/upcomming_events/match">
+		    	<div class="event-title"><xsl:value-of select="MatchDateTime"/></div>
+
+		      	<img class="team-icon">
+		      	<xsl:attribute name="src">
+		      		<xsl:value-of select="Team1URL"/>
+		      	</xsl:attribute>
+		      	</img>&#160;
+		      	<xsl:value-of select="Team1"/>
+ - 
+		      	<xsl:value-of select="Team2"/>
+		      	&#160;<img class="team-icon">
+		      	<xsl:attribute name="src">
+		      		<xsl:value-of select="Team2URL"/>
+		      	</xsl:attribute>
+		      	</img>
+			<hr />
+		    </xsl:for-each>
+
+		</section>
+		
+		
+		<section id="search_results">
+		<hr />
+		
+		
+		
+		
 		<div id="datatable" style="display: none">
 			Results: <hr />
 

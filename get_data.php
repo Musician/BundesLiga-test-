@@ -8,7 +8,7 @@ $conn->debug=true;
 $match = new Match();
 $curl = new CURL();
 
-$data = $curl->get("https://www.openligadb.de/api/getmatchdata/bl1/2016");
+$data = $curl->get("https://www.openligadb.de/api/getmatchdata/bl1/2018");
 $data = json_decode($data);
 
 foreach ($data as $match)

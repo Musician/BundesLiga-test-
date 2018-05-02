@@ -66,7 +66,6 @@ class Object
         $result = $conn->Execute("SELECT * FROM $this->table WHERE id = -1");
         $obj_vars = $result->FetchObj();
         $insertSQL = $conn->GetInsertSQL($result, get_object_vars($this));
-        echo "Insert: " . $insertSQL;
         $conn->Execute($insertSQL);
         if (! $this->id) {$this->id = $conn->Insert_ID();}
         $this->update($properties);

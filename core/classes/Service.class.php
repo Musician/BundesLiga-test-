@@ -25,16 +25,19 @@ class Service
 	private function searchByTeam($string)
 	{
 		global $conn;
+		$data = array();
+		($_POST['season'] AND $_POST['season'] !="undefined" AND $_POST['season'] !="null") ? $additional_where = " AND YEAR(m.MatchDateTime) = '".$_POST['season']."' " : $additional_where = "";  
+		
 		$sql = "
 			SELECT m.MatchDateTime, t1.`TeamName` AS team1name, t2.`TeamName` AS team2name FROM goals g
 			LEFT JOIN matches m ON g.`MatchID` = m.`MatchID`
 			LEFT JOIN locations l ON m.`LocationID`=l.`LocationID`
 			LEFT JOIN teams t1 ON m.Team1ID=t1.id
 			LEFT JOIN teams t2 ON m.Team2ID=t2.id
-			WHERE t1.`TeamName` LIKE '%$string%' OR t2.`TeamName` LIKE '%$string%'	
+			WHERE (t1.`TeamName` LIKE '%$string%' OR t2.`TeamName` LIKE '%$string%') 	$additional_where
 			GROUP BY m.MatchDateTime
 		";
-		
+
 		$result = $conn->getAll($sql);
 		foreach ($result as $r)
 			$data[] = array_values($r);

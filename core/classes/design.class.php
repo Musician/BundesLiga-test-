@@ -12,11 +12,15 @@ class Design
 		(isset($_GET['a']) and $_GET['a'] != '') ? $action = $_GET['a'] : $action = "index";  
 		if (isset($_GET['lang'])) $_SESSION['lang'] = $_GET['lang'];
 		(isset($_SESSION['lang'])) ? $lang = $_SESSION['lang'] : $lang = "bg";
-		$root['activelang'] = $lang;
-		$root['action'] = $action;
+		//$root['activelang'] = $lang;
+		//$root['action'] = $action;
 		
 		if (!empty($member) AND method_exists($member, $action))
 			$root['data'] = $member->$action(); 
+		
+		include_once CLASSES . 'Match.class.php';
+		$match = new Match();
+		$root['upcomming_events'] = $match->getUpcommingEvents();
 		
 
 		# # # # # # # # # # # # # # # # #
