@@ -98,7 +98,29 @@ class Match extends Object
 			$arr[$this->suffix . "_" . $a['MatchID']] = $a;
 		
 		return $arr;
-		
+	}
+
+	
+	public function getSeasonMatches()
+	{
+		global $conn;
+	
+		$arr = array();
+		$all = $conn->GetAll("
+			SELECT m.`MatchID`, m.`MatchDateTime`, t1.`TeamName` AS Team1, t2.`TeamName` AS Team2, t1.`TeamIconUrl` AS Team1URL, t2.`TeamIconUrl` AS Team2URL, l.`LocationCity`, l.`LocationStadium` FROM matches m
+			LEFT JOIN teams t1 ON m.`Team1ID` = t1.`TeamId` 
+			LEFT JOIN teams t2 ON m.`Team2ID` = t2.`TeamId` 
+			LEFT JOIN locations l ON m.`LocationID` = l.`LocationID` 
+			
+			
+			WHERE YEAR(m.MatchDateTime) = YEAR(NOW()) AND t1.`TeamName` IS NOT NULL AND t2.`TeamName` IS NOT NULL AND l.LocationCity IS NOT NULL
+			ORDER BY m.MatchDateTime
+		");
+	
+		foreach ($all as $a)
+			$arr[$this->suffix . "_" . $a['MatchID']] = $a;
+	
+			return $arr;
 	}
 	
 }

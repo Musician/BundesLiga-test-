@@ -13,21 +13,26 @@ $( document ).ready(function() {
 	    })
 	    .done(function(response) {
 		    // Set the message text.
-	    	console.log(response);
-	    	$("#datatable").show("slow");
-	    	$('#resulttable').DataTable({
-	    	    searching: false,
-	            data: response,
-	            columns: [
-	                { title: "DateTime" },
-	                { title: "Team Name" },
-	                { title: "Team Name" },
-
-	            ]
-	        });
+	    	if ($.isArray(response))
+	    	{
+		    	$("#datatable").show("slow");
+		    	$('#resulttable').DataTable({
+		    	    searching: false,
+		            data: response,
+		            columns: [
+		                { title: "DateTime" },
+		                { title: "Team Name" },
+		                { title: "Team Name" },
+	
+		            ]
+		        });
+	    	} else {
+	    		$("#search_results").html("Player: <b>" + searchstring + "</b> scored <b>" + response + "</b> goals this season. (task 4 from the test)");
+	    	}
+	    		
 	    })
 	    .fail(function(response) {
-		    alert("Error");
+	    	console.log(response.responseText);
 	    });
 	    
 	    

@@ -21,6 +21,7 @@ class Design
 		include_once CLASSES . 'Match.class.php';
 		$match = new Match();
 		$root['upcomming_events'] = $match->getUpcommingEvents();
+		$root['season_matches'] = $match->getSeasonMatches();
 		
 
 		# # # # # # # # # # # # # # # # #

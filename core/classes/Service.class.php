@@ -32,8 +32,8 @@ class Service
 			SELECT m.MatchDateTime, t1.`TeamName` AS team1name, t2.`TeamName` AS team2name FROM goals g
 			LEFT JOIN matches m ON g.`MatchID` = m.`MatchID`
 			LEFT JOIN locations l ON m.`LocationID`=l.`LocationID`
-			LEFT JOIN teams t1 ON m.Team1ID=t1.id
-			LEFT JOIN teams t2 ON m.Team2ID=t2.id
+			LEFT JOIN teams t1 ON m.`Team1ID` = t1.`TeamId` 
+			LEFT JOIN teams t2 ON m.`Team2ID` = t2.`TeamId` 
 			WHERE (t1.`TeamName` LIKE '%$string%' OR t2.`TeamName` LIKE '%$string%') 	$additional_where
 			GROUP BY m.MatchDateTime
 		";
@@ -46,8 +46,14 @@ class Service
 	
 	private function simpleSearch($string)
 	{
-		echo "Trigger simple search";
-	
+		global $conn;
+		if ($playerID = $conn->GetOne("SELECT GoalGetterID FROM `players` WHERE GoalGetterName LIKE '%$string%'"))
+			$goalGetter = $conn->GetOne("SELECT COUNT(GoalID) FROM `goals` WHERE GoalGetterID=$playerID");
+		
+		else 
+			$goalGetter = "Error: Cann`t find data match for $string (SELECT GoalGetterID FROM `players` WHERE GoalGetterName LIKE '%$string%')";
+
+		return $goalGetter;
 	}
 	
 	

@@ -33,6 +33,21 @@
 			</div>
 		</div>
 		</section>		
+
+		<section id="search_results">
+		<hr />
+		
+		<div id="datatable" style="display: none">
+			Results: <hr />
+
+			<table id="resulttable" class="display" width="60%">
+
+			</table>
+
+		</div>
+		
+		</section>
+
 		
 		<section id="upcomming_events">
 		<hr />
@@ -58,23 +73,31 @@
 
 		</section>
 		
-		
-		<section id="search_results">
+		<section id="season_matches">
 		<hr />
-		
-		
-		
-		
-		<div id="datatable" style="display: none">
-			Results: <hr />
+		<h3>All Season Matches: <small>(point 2 from the task)</small></h3>
+		    <xsl:for-each select="/root/season_matches/match">
+		    	<div class="event-title"><xsl:value-of select="MatchDateTime"/></div>
 
-			<table id="resulttable" class="display" width="60%">
+		      	<img class="team-icon">
+		      	<xsl:attribute name="src">
+		      		<xsl:value-of select="Team1URL"/>
+		      	</xsl:attribute>
+		      	</img>&#160;
+		      	<xsl:value-of select="Team1"/>
+ - 
+		      	<xsl:value-of select="Team2"/>
+		      	&#160;<img class="team-icon">
+		      	<xsl:attribute name="src">
+		      		<xsl:value-of select="Team2URL"/>
+		      	</xsl:attribute>
+		      	</img>
+			<hr />
+		    </xsl:for-each>
 
-			</table>
-
-		</div>
-		
 		</section>
+		
+		
 
     </xsl:template>
 </xsl:stylesheet>
